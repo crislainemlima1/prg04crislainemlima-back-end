@@ -29,6 +29,19 @@ public class UsuarioController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    // PUT — atualiza um usuário por ID
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @RequestBody Usuario usuarioAtualizado) {
+        return service.buscarPorId(id)
+                .map(usuario -> {
+                    usuario.setNome(usuarioAtualizado.getNome());
+                    usuario.setEmail(usuarioAtualizado.getEmail());
+                    usuario.setSenha(usuarioAtualizado.getSenha());
+                    return ResponseEntity.ok(service.salvar(usuario));
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     // POST — cria um novo usuário
     @PostMapping
     public Usuario criar(@RequestBody Usuario usuario) {
