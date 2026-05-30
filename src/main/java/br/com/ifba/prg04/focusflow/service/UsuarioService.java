@@ -4,6 +4,7 @@ import br.com.ifba.prg04.focusflow.model.Usuario;
 import br.com.ifba.prg04.focusflow.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,11 +26,13 @@ public class UsuarioService {
     }
 
     // Salva um novo usuário
+    @Transactional
     public Usuario salvar(Usuario usuario) {
         return repository.save(usuario);
     }
 
     // Deleta um usuário por ID
+    @Transactional
     public void deletar(Long id) {
         repository.deleteById(id);
     }

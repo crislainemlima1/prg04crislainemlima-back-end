@@ -5,6 +5,7 @@ import br.com.ifba.prg04.focusflow.DTO.UsuarioResponseDTO;
 import br.com.ifba.prg04.focusflow.mapper.UsuarioMapper;
 import br.com.ifba.prg04.focusflow.model.Usuario;
 import br.com.ifba.prg04.focusflow.service.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +44,7 @@ public class UsuarioController {
 
     // PUT — atualiza um usuário por ID
     @PutMapping("/{id}")
-    public ResponseEntity<UsuarioResponseDTO> atualizar(@PathVariable Long id, @RequestBody UsuarioRequestDTO dto) {
+    public ResponseEntity<UsuarioResponseDTO> atualizar(@PathVariable Long id, @RequestBody @Valid UsuarioRequestDTO dto) {
         return service.buscarPorId(id)
                 .map(usuario -> {
                     usuario.setNome(dto.getNome());
@@ -56,7 +57,7 @@ public class UsuarioController {
 
     // POST — cria um novo usuário
     @PostMapping
-    public UsuarioResponseDTO criar(@RequestBody UsuarioRequestDTO dto) {
+    public UsuarioResponseDTO criar(@RequestBody @Valid UsuarioRequestDTO dto) {
         return mapper.toResponseDTO(service.salvar(mapper.toEntity(dto)));
     }
 

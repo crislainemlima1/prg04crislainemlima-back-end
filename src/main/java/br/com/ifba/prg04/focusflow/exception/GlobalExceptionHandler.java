@@ -2,6 +2,8 @@ package br.com.ifba.prg04.focusflow.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -12,6 +14,23 @@ import java.util.Map;
 // Tratamento centralizado de exceções
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+
+    // Trata erros de validação dos campos do DTO
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, Object>> handlerValidation(MethodArgumentNotValidException ex) {
+
+        Map<String, Object> erros = new HashMap<>(); // declarado aqui!
+
+        // Pega cada campo que falhou na validação
+        ex.getBindingResult().getAllErrors().forEach(error -> {
+            String campo = ((FieldError) error).getField();
+            String mensagem = error.getDefaultMessage();
+            erros.put(campo, mensagem);
+        });
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erros);
+    }
 
     // Trata exceções de recurso não encontrado (404)
     @ExceptionHandler(ResourceNotFoundException.class)
