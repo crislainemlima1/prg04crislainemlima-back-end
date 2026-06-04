@@ -3,6 +3,8 @@ package br.com.ifba.prg04.focusflow.service;
 import br.com.ifba.prg04.focusflow.model.Usuario;
 import br.com.ifba.prg04.focusflow.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,8 +18,8 @@ public class UsuarioService {
     private UsuarioRepository repository;
 
     // Lista todos os usuários
-    public List<Usuario> listarTodos() {
-        return repository.findAll();
+    public Page<Usuario> listarTodos(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     // Busca usuário por ID

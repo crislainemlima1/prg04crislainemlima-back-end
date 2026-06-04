@@ -7,9 +7,11 @@ import br.com.ifba.prg04.focusflow.model.Usuario;
 import br.com.ifba.prg04.focusflow.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import br.com.ifba.prg04.focusflow.model.Usuario;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,11 +28,9 @@ public class UsuarioController {
 
     // GET — lista todos os usuários
     @GetMapping
-    public List<UsuarioResponseDTO> listarTodos() {
-        return service.listarTodos()
-                .stream()
-                .map(mapper::toResponseDTO)
-                .collect(Collectors.toList());
+    public Page<UsuarioResponseDTO> listarTodos(Pageable pageable) {
+        return service.listarTodos(pageable)
+                .map(mapper::toResponseDTO);
     }
 
     // GET — busca usuário por ID
