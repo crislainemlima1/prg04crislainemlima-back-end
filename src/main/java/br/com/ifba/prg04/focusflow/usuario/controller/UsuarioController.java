@@ -1,20 +1,15 @@
-package br.com.ifba.prg04.focusflow.controller;
+package br.com.ifba.prg04.focusflow.usuario.controller;
 
-import br.com.ifba.prg04.focusflow.DTO.UsuarioRequestDTO;
-import br.com.ifba.prg04.focusflow.DTO.UsuarioResponseDTO;
-import br.com.ifba.prg04.focusflow.mapper.UsuarioMapper;
-import br.com.ifba.prg04.focusflow.model.Usuario;
-import br.com.ifba.prg04.focusflow.service.UsuarioService;
+import br.com.ifba.prg04.focusflow.usuario.dto.UsuarioRequestDTO;
+import br.com.ifba.prg04.focusflow.usuario.dto.UsuarioResponseDTO;
+import br.com.ifba.prg04.focusflow.usuario.mapper.UsuarioMapper;
+import br.com.ifba.prg04.focusflow.usuario.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/usuarios")

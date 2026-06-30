@@ -1,4 +1,4 @@
-package br.com.ifba.prg04.focusflow.model;
+package br.com.ifba.prg04.focusflow.usuario.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package br.com.ifba.prg04.focusflow.DTO;
+package br.com.ifba.prg04.focusflow.usuario.dto;
 
 import lombok.Data;
 

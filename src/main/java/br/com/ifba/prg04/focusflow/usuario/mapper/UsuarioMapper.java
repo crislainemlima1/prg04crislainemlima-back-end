@@ -1,8 +1,8 @@
-package br.com.ifba.prg04.focusflow.mapper;
+package br.com.ifba.prg04.focusflow.usuario.mapper;
 
-import br.com.ifba.prg04.focusflow.DTO.UsuarioRequestDTO;
-import br.com.ifba.prg04.focusflow.DTO.UsuarioResponseDTO;
-import br.com.ifba.prg04.focusflow.model.Usuario;
+import br.com.ifba.prg04.focusflow.usuario.dto.UsuarioRequestDTO;
+import br.com.ifba.prg04.focusflow.usuario.dto.UsuarioResponseDTO;
+import br.com.ifba.prg04.focusflow.usuario.model.Usuario;
 import org.springframework.stereotype.Component;
 
 // classe responsavel por converter entre entidade e dto

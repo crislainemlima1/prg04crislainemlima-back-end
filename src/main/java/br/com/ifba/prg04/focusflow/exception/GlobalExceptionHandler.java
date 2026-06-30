@@ -47,8 +47,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleGeneric(Exception ex) {
         Map<String, Object> erro = new HashMap<>();
         erro.put("status", 500);
-        erro.put("mensagem", "Erro interno no servidor");
+        erro.put("mensagem", ex.getMessage()); // mostra a mensagem real temporariamente
         erro.put("timestamp", LocalDateTime.now());
+        ex.printStackTrace(); // imprime o erro completo no console
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(erro);
     }
 }
