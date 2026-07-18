@@ -2,6 +2,7 @@ package br.com.ifba.prg04.focusflow.usuario.service;
 
 import br.com.ifba.prg04.focusflow.usuario.model.Usuario;
 import br.com.ifba.prg04.focusflow.usuario.repository.UsuarioRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,13 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-public class UsuarioService {
+@RequiredArgsConstructor // Lombok gera o construtor com os campos final automaticame
+public class UsuarioService implements UsuarioIService{
 
-    @Autowired
-    private UsuarioRepository repository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final UsuarioRepository repository;
+    private final PasswordEncoder passwordEncoder;
 
     // Lista todos os usuários
     public Page<Usuario> listarTodos(Pageable pageable) {

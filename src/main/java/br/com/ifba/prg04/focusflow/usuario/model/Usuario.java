@@ -1,17 +1,17 @@
 package br.com.ifba.prg04.focusflow.usuario.model;
 
+import br.com.ifba.prg04.focusflow.common.PersistentEntity;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 // Entidade que representa a tabela de usuários no banco de dados
 @Entity
 @Table(name = "usuarios")
 @Data
-public class Usuario {
+@EqualsAndHashCode(callSuper = true)
+public class Usuario extends PersistentEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // ID gerado automaticamente
-    private Long id;
 
     private String nome;
 

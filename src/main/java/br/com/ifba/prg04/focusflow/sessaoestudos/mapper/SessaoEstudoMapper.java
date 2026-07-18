@@ -1,9 +1,9 @@
-package br.com.ifba.prg04.focusflow.sessaoEstudos.mapper;
+package br.com.ifba.prg04.focusflow.sessaoestudos.mapper;
 
-import br.com.ifba.prg04.focusflow.sessaoEstudos.dto.SessaoEstudoRequestDTO;
-import br.com.ifba.prg04.focusflow.sessaoEstudos.dto.SessaoEstudoResponseDTO;
+import br.com.ifba.prg04.focusflow.sessaoestudos.dto.SessaoEstudoRequestDTO;
+import br.com.ifba.prg04.focusflow.sessaoestudos.dto.SessaoEstudoResponseDTO;
 import br.com.ifba.prg04.focusflow.materia.model.Materia;
-import br.com.ifba.prg04.focusflow.sessaoEstudos.model.SessaoEstudo;
+import br.com.ifba.prg04.focusflow.sessaoestudos.model.SessaoEstudo;
 import org.springframework.stereotype.Component;
 
 @Component

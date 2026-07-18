@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 public class UsuarioResponseDTO {
 
+    // identificadore, nome e email do usuario sem expor a senha
     private Long id;
     private String nome;
     private String email;

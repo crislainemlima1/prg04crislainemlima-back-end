@@ -9,10 +9,10 @@ import lombok.Data;
 @Data
 public class UsuarioRequestDTO {
 
-    @NotBlank(message = "O nome é obrigatório")
+    @NotBlank(message = "O nome é obrigatório") // valida que não pode ser vazio
     private String nome;
 
-    @NotBlank(message = "O e-mail é obrigatório")
+    @NotBlank(message = "O e-mail é obrigatório") // valida o formato de email
     @Email(message = "email invalido")
     private String email;
 

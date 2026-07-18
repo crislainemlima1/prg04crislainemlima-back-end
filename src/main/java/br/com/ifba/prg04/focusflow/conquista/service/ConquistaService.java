@@ -5,6 +5,7 @@ import br.com.ifba.prg04.focusflow.conquista.model.Conquista;
 import br.com.ifba.prg04.focusflow.usuario.model.Usuario;
 import br.com.ifba.prg04.focusflow.conquista.repository.ConquistaRepository;
 import br.com.ifba.prg04.focusflow.usuario.service.UsuarioService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,13 +14,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ConquistaService {
+@RequiredArgsConstructor
+public class ConquistaService implements ConquistaIService{
 
-    @Autowired
-    private ConquistaRepository repository;
 
-    @Autowired
-    private UsuarioService usuarioService;
+    private final ConquistaRepository repository;
+    private final UsuarioService usuarioService;
 
     // Lista todas as conquistas
     @Transactional

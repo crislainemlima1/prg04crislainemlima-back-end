@@ -2,6 +2,7 @@ package br.com.ifba.prg04.focusflow.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,6 +15,16 @@ import java.util.Map;
 // Tratamento centralizado de exceções
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    // Trata tentativas de acessar/alterar recursos que não pertencem ao usuário autenticado (403)
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<Map<String, Object>> handleAccessDenied(AccessDeniedException ex) {
+        Map<String, Object> erro = new HashMap<>();
+        erro.put("status", 403);
+        erro.put("mensagem", "Você não tem permissão para acessar este recurso");
+        erro.put("timestamp", LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(erro);
+    }
 
 
     // Trata erros de validação dos campos do DTO

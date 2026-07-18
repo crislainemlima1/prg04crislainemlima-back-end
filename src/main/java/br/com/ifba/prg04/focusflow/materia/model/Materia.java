@@ -1,18 +1,18 @@
 package br.com.ifba.prg04.focusflow.materia.model;
 
+import br.com.ifba.prg04.focusflow.common.PersistentEntity;
 import br.com.ifba.prg04.focusflow.usuario.model.Usuario;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "materias")
 @Data
-public class Materia {
+@EqualsAndHashCode(callSuper = true)
+public class Materia extends PersistentEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Long id;
     private String nome;
     private Integer metaHora;
 
