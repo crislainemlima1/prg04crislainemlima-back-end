@@ -35,3 +35,6 @@ build/
 ### Configurações locais com credenciais reais (NUNCA versionar) ###
 application-local.properties
 .env
+
+### Proteger application.properties com credenciais ###
+src/main/resources/application.properties
