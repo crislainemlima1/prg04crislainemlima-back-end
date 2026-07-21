@@ -1,7 +1,7 @@
 package br.com.ifba.prg04.focusflow.flashcard.model;
 
 import br.com.ifba.prg04.focusflow.common.PersistentEntity;
-import br.com.ifba.prg04.focusflow.resumo.model.Resumo;
+import br.com.ifba.prg04.focusflow.ia.resumo.model.Resumo;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

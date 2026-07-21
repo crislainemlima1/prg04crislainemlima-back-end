@@ -6,7 +6,7 @@ import br.com.ifba.prg04.focusflow.flashcard.dto.FlashcardResponseDTO;
 import br.com.ifba.prg04.focusflow.flashcard.mapper.FlashcardMapper;
 import br.com.ifba.prg04.focusflow.flashcard.model.Flashcard;
 import br.com.ifba.prg04.focusflow.flashcard.service.FlashcardService;
-import br.com.ifba.prg04.focusflow.resumo.model.Resumo;
+import br.com.ifba.prg04.focusflow.ia.resumo.model.Resumo;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

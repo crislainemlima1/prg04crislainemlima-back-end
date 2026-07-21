@@ -1,4 +1,4 @@
-package br.com.ifba.prg04.focusflow.resumo.model;
+package br.com.ifba.prg04.focusflow.ia.resumo.model;
 
 import br.com.ifba.prg04.focusflow.common.PersistentEntity;
 import br.com.ifba.prg04.focusflow.materia.model.Materia;
@@ -7,13 +7,10 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-
-// Entidade que representa um resumo gerado pela IA e salvo no banco
 @Entity
 @Table(name = "resumos")
 @Data
 @EqualsAndHashCode(callSuper = true)
-
 public class Resumo extends PersistentEntity {
 
     @Column(columnDefinition = "TEXT")
@@ -27,11 +24,9 @@ public class Resumo extends PersistentEntity {
 
     private String dificuldadeEstimada;
 
-
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
-
 
     @ManyToOne
     @JoinColumn(name = "materia_id", nullable = false)

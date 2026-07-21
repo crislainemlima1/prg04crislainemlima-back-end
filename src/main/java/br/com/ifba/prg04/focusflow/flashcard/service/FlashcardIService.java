@@ -1,7 +1,7 @@
 package br.com.ifba.prg04.focusflow.flashcard.service;
 
 import br.com.ifba.prg04.focusflow.flashcard.model.Flashcard;
-import br.com.ifba.prg04.focusflow.resumo.model.Resumo;
+import br.com.ifba.prg04.focusflow.ia.resumo.model.Resumo;
 
 import java.util.List;
 import java.util.Optional;

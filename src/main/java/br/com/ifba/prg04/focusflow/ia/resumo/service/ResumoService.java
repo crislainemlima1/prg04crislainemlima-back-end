@@ -2,6 +2,8 @@ package br.com.ifba.prg04.focusflow.ia.resumo.service;
 
 import br.com.ifba.prg04.focusflow.ia.client.OpenAiClient;
 import br.com.ifba.prg04.focusflow.ia.resumo.dto.ResumoResponseDTO;
+import br.com.ifba.prg04.focusflow.ia.resumo.model.Resumo;
+import br.com.ifba.prg04.focusflow.ia.resumo.repository.ResumoRepository;
 import br.com.ifba.prg04.focusflow.materia.model.Materia;
 import br.com.ifba.prg04.focusflow.materia.service.MateriaService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -10,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +21,7 @@ public class ResumoService {
     private final OpenAiClient openAiClient;
     private final MateriaService materiaService;
     private final ObjectMapper objectMapper;
+    private final ResumoRepository resumoRepository;
 
     private static final String PROMPT_SISTEMA = """
             Você é o assistente de estudos do FocusFlow. Sua tarefa é analisar um texto de estudo
@@ -57,6 +61,9 @@ public class ResumoService {
         }
     }
 
+    public Optional<Resumo> buscarPorId(Long id) {
+        return resumoRepository.findById(id);
+    }
     // Precaução: caso o modelo devolva o JSON envolto em ```json ... ```, remove as cercas
     private String limparJson(String resposta) {
         String limpo = resposta.trim();

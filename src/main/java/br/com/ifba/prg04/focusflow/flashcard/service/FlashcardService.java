@@ -3,8 +3,9 @@ package br.com.ifba.prg04.focusflow.flashcard.service;
 import br.com.ifba.prg04.focusflow.exception.ResourceNotFoundException;
 import br.com.ifba.prg04.focusflow.flashcard.model.Flashcard;
 import br.com.ifba.prg04.focusflow.flashcard.repository.FlashcardRepository;
-import br.com.ifba.prg04.focusflow.resumo.model.Resumo;
-import br.com.ifba.prg04.focusflow.resumo.service.ResumoService;
+
+import br.com.ifba.prg04.focusflow.ia.resumo.model.Resumo;
+import br.com.ifba.prg04.focusflow.ia.resumo.service.ResumoService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
