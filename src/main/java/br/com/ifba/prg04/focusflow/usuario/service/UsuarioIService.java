@@ -8,6 +8,8 @@ import java.util.Optional;
 
 // Interface que define o contrato do serviço de usuário
 public interface UsuarioIService {
+
+
     Page<Usuario> listarTodos(Pageable pageable);
 
     Optional<Usuario> buscarPorId(Long id);

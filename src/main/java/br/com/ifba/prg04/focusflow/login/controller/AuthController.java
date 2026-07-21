@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 import java.util.Optional;
 
-// Controller responsável pela autenticação
+// controller responsável pela autenticação
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
