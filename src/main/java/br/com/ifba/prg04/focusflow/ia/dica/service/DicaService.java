@@ -22,15 +22,30 @@ public class DicaService {
     private final OpenAiClient openAiClient;
 
     private static final String PROMPT_SISTEMA = """
-            Você é o assistente de estudos do FocusFlow. Antes de uma sessão Pomodoro, dê UMA dica
-            curta (1 a 2 frases), em português, sobre como o usuário deve focar essa sessão para a
-            matéria informada, com base no resumo de histórico de estudo fornecido (meta de horas,
-            número de sessões e minutos totais estudados nessa matéria).
-            Use apenas os dados fornecidos. NUNCA invente números, percentuais de erro, tópicos
-            específicos (como "limites laterais") ou qualquer estatística que não esteja no resumo
-            enviado — nesses casos, fale de forma geral sobre a matéria.
-            Responda apenas com o texto da dica, sem formatação markdown.
-            """;
+        Você é um tutor especialista do FocusFlow. Recebe um texto de estudo e deve produzir
+        uma análise pedagógica profunda. Retorne SOMENTE um JSON válido, sem texto antes ou
+        depois e sem blocos markdown, exatamente neste formato:
+        {
+          "ideiaCentral": "Síntese do conceito principal em UMA frase de até 25 palavras, escrita com suas próprias palavras — NUNCA copie trechos do texto original",
+          "conceitosChave": [
+            "Conceito 1 explicado de forma diferente do texto, mostrando o porquê ele importa",
+            "Conceito 2 com uma analogia ou exemplo prático que NÃO aparece no texto",
+            "Conceito 3 conectando a ideia a uma aplicação real ou consequência prática"
+          ],
+          "conexoes": "Explique como esse conteúdo se relaciona com as matérias que o usuário já estuda, apontando onde esse conhecimento será usado na prática. Se não houver matérias, dê uma observação pedagógica sobre pré-requisitos ou próximos passos de estudo.",
+          "dificuldadeEstimada": "facil ou intermediario ou dificil",
+          "flashcard": {
+            "pergunta": "Uma pergunta que exige raciocínio ou aplicação — NUNCA pergunte algo cuja resposta apareça literalmente no texto. Prefira 'Por que...', 'Como...', 'O que acontece quando...'",
+            "resposta": "Resposta direta, clara e completa em no máximo 2 frases, usando linguagem diferente do texto original"
+          }
+        }
+        Regras obrigatórias:
+        1. NUNCA repita frases ou expressões do texto original.
+        2. A ideia central deve ser uma reinterpretação, não uma cópia.
+        3. Os conceitos-chave devem trazer valor além do que está no texto (analogias, exemplos, consequências).
+        4. O flashcard deve testar compreensão real, não memorização literal.
+        5. Responda em português.
+        """;
 
     public DicaResponseDTO gerarDica(Long materiaId, Long usuarioId) {
         Materia materia = materiaService.buscarPorId(materiaId)

@@ -28,12 +28,12 @@ public class SessaoEstudoService implements SessaoEstudoIService{
 
     @Transactional
     public List<SessaoEstudo> listarPorMateria(Long materiaId){
-        return repository.findByMateriaId(materiaId);
+        return repository.findByMateriaIdOrderByDataDescIdDesc(materiaId);
     }
 
     @Transactional
     public List<SessaoEstudo> listarPorUsuario(Long usuarioId){
-        return repository.findByMateriaUsuarioId(usuarioId);
+        return repository.findByMateriaUsuarioIdOrderByDataDescIdDesc(usuarioId);
     }
 
     public Optional<SessaoEstudo> buscarPorId(Long id) {

@@ -9,9 +9,8 @@ import java.util.List;
 @Repository
 public interface SessaoEstudoRepository extends JpaRepository<SessaoEstudo, Long> {
 
-    // Método customizado busca todas as sessões de estudo de uma matéria específica
-    List<SessaoEstudo> findByMateriaId(Long materiaId);
+    List<SessaoEstudo> findByMateriaIdOrderByDataDescIdDesc(Long materiaId);
 
-    // Busca todas as sessões de estudo cujas matérias pertencem a um usuário específico
-    List<SessaoEstudo> findByMateriaUsuarioId(Long usuarioId);
+    List<SessaoEstudo> findByMateriaUsuarioIdOrderByDataDescIdDesc(Long usuarioId);
+
 }
